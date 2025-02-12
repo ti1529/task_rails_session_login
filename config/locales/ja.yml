@@ -6,10 +6,31 @@ ja:
       task:
         title: タイトル
         content: 内容
+      user:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認）
+
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              format: "%{message}"
+              taken: このメールアドレスはすでに使用されています
+              blank: メールアドレスを入力してください
+
+              
   errors:
     format: "%{attribute}%{message}"
     messages:
       blank: を入力してください
+    attributes:
+      password_confirmation: 
+        confirmation: とパスワードの入力が一致しません
+
+
   helpers:
     submit:
       create: 登録する
@@ -21,6 +42,10 @@ ja:
     destroy: 削除
     back: 戻る
     confirm_destroy: 本当に削除してもよろしいですか？
+
+    sign_up: アカウント登録
+    sign_in: ログイン
+
   tasks:
     index:
       title: タスク一覧ページ
@@ -36,3 +61,30 @@ ja:
       updated: タスクを更新しました
     destroy:
       destroyed: タスクを削除しました
+
+  users:
+    # index:
+    #   title: タスク一覧ページ
+    new:
+      title: アカウント登録ページ
+    edit:
+      title: アカウント編集ページ
+    show:
+      title: アカウント詳細ページ
+    create:
+      created: アカウントを登録しました
+    update:
+      updated: アカウントを更新しました
+    destroy:
+      destroyed: アカウントを削除しました
+
+  sessions:
+    new:
+      title: ログインページ
+      email: メールアドレス
+      password: パスワード
+    create:
+      created: ログインしました
+      failed: メールアドレスまたはパスワードに誤りがあります
+    destroy:
+      destroyed: ログアウトしました

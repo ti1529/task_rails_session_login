@@ -10,7 +10,26 @@
   </head>
 
   <body>
-    <p id="notice"><%= notice %></p>
+    <!-- 一旦削除 <p id="notice"><%= notice %></p> -->
+
+    <!-- ログイン失敗時のエラー表示 -->
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+
+    <!-- ヘッダーリンク -->
+    <% if logged_in? %>
+      <ul>
+        <li id="tasks-index"><%= link_to "タスク一覧", tasks_path %></li>
+        <li id="new-task"><%= link_to "タスクを登録する", new_task_path(current_user.id) %></li>
+        <li id="my-account"><%= link_to "アカウント", user_path(current_user.id) %></li>
+        <li id="sign-out"><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+      </ul>
+    <% else %>
+      <li id="sign-up"><%= link_to t("common.sign_up"), new_user_path %></li>
+      <li id="sign-in"><%= link_to t("common.sign_in"), new_session_path %></li>
+    <% end %>
+
     <%= yield %>
   </body>
 </html>
