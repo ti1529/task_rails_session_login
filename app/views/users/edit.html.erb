@@ -2,7 +2,6 @@
 
 <!-- ユーザ更新失敗後の表示 -->
 <% if @user.errors.any? %>
-<% binding.irb %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
     <ul>
