@@ -7,7 +7,9 @@ class User < ApplicationRecord
                     length: { maximum: 255 }, 
                     uniqueness: true
                     # format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-  validates :password, length: {minimum: 6, message: "は6文字以上で入力してください"}
+  validates :password, presence: true,
+                      length: {minimum: 6, message: "は6文字以上で入力してください"}
+                      
 
   has_secure_password
 
