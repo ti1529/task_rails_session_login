@@ -46,6 +46,7 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 
+  # アクセス先のユーザ情報が、ログインユーザと一致しない場合、
   def correct_user
     @user = User.find(params[:id])
     redirect_to current_user unless current_user?(@user)
